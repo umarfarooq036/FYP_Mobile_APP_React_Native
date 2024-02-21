@@ -19,6 +19,8 @@ import Trending from "./Components/Product_Listings/Trending_Products";
 import Footer from "./Components/Footer";
 import ProfilePage from "./pages/ProfilePage";
 import Cart from "./pages/Cart/CartPage";
+import ContactUs from "./pages/ContactUs";
+import SingleProductDetailScreen from "./pages/SingleProduct/SingleProductDetailScreen";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -50,6 +52,10 @@ export default function App() {
         <Stack.Screen name="Home" component={HomeScreen}/>
         <Stack.Screen name="Profile" component={ProfilePage}/>
         <Stack.Screen name="Cart" component={Cart}/>
+        <Stack.Screen name="Contact" component={ContactUs}/>
+        <Stack.Screen name="SingleProduct" component={SingleProductDetailScreen}/>
+        
+
 
 
       </Stack.Navigator>

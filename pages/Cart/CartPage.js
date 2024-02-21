@@ -7,7 +7,8 @@ import {
   TouchableOpacity,
   StyleSheet,
   ScrollView,
-  Button
+  Button,
+  ToastAndroid
 } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import CartBanner from "./CartBanner";
@@ -146,7 +147,7 @@ export default function Cart({navigation}) {
             <Text style={styles.totalText}>Total Bill:</Text>
             <Text style={styles.totalAmount}>Rs. {getTotalBill()}</Text>
           </View>
-          <TouchableOpacity style={styles.checkoutButton}>
+          <TouchableOpacity style={styles.checkoutButton} onPress={()=>{ToastAndroid.show("Proceed to ChekcOut!",ToastAndroid.SHORT)}}>
             <Text style={styles.checkoutButtonText}>Proceed to Checkout</Text>
           </TouchableOpacity>
         </View>

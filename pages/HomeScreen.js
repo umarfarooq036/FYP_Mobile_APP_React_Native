@@ -27,11 +27,11 @@ const HomeScreen = ({ navigation }) => {
       <ScrollView>
         <View style={{ flex: 1 }}>
             <Navbar navigation={navigation}/>
-            <HeroSection />
-            <CategoriesSection />
-            <Latest />
-            <Trending />
-            <Footer />
+            <HeroSection navigation={navigation}/>
+            <CategoriesSection navigation={navigation}/>
+            <Latest navigation={navigation}/>
+            <Trending navigation={navigation}/>
+            <Footer navigation={navigation}/>
         </View>
       </ScrollView>
     </SafeAreaView>

@@ -1,6 +1,5 @@
-
 import React from "react";
-import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView } from "react-native";
+import { View, Text, Image, TouchableOpacity, StyleSheet, FlatList } from "react-native";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faStar, faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import img1 from "../../assets/img/prod-10.jpg";
@@ -78,53 +77,59 @@ const latestProducts = [
     price: 1330,
   },
 ];
-export default function Trending({navigation}) {
-  const redirectToProductDetail = (product) => {
-    navigation.navigate('SingleProduct' ,{data:product});
 
-    // Implement navigation to product detail screen
+export default function YouMayLike({ navigation }) {
+
+  const redirectToProductDetail = (product) => {
+    navigation.navigate('SingleProduct', { data: product });
   };
+
+  const renderItem = ({ item }) => (
+    <TouchableOpacity
+      onPress={() => { redirectToProductDetail(item) }}
+      activeOpacity={1}
+      style={{ flex: 1, marginBottom: 20 }}
+    >
+      <View style={styles.product}>
+        <Image source={item.imgSrc} style={styles.image} />
+        <View style={styles.detailsContainer}>
+          <Text style={styles.brand}>{item.brand}</Text>
+          <Text style={styles.name}>{item.name}</Text>
+          <View style={styles.ratingContainer}>
+            {Array.from({ length: item.rating }, (_, index) => (
+              <FontAwesomeIcon
+                key={index}
+                icon={faStar}
+                style={styles.starIcon}
+              />
+            ))}
+          </View>
+          <Text style={styles.price}>${item.price}</Text>
+        </View>
+        <TouchableOpacity
+          style={styles.cartIconContainer}
+          onPress={() => console.log("Add to cart")}
+        >
+          <FontAwesomeIcon
+            icon={faCartPlus}
+            size={20}
+            style={styles.cartIcon}
+          />
+        </TouchableOpacity>
+      </View>
+    </TouchableOpacity>
+  );
 
   return (
     <View style={styles.container}>
-      <Text style={styles.heading}>Trending</Text>
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        {latestProducts.map((product) => (
-          <TouchableOpacity
-            key={product.id}
-            onPress={()=>{redirectToProductDetail(product)}}
-            activeOpacity={1}
-          >
-            <View style={styles.product}>
-              <Image source={product.imgSrc} style={styles.image} />
-              <View style={styles.detailsContainer}>
-                <Text style={styles.brand}>{product.brand}</Text>
-                <Text style={styles.name}>{product.name}</Text>
-                <View style={styles.ratingContainer}>
-                  {Array.from({ length: product.rating }, (_, index) => (
-                    <FontAwesomeIcon
-                      key={index}
-                      icon={faStar}
-                      style={styles.starIcon}
-                    />
-                  ))}
-                </View>
-                <Text style={styles.price}>${product.price}</Text>
-              </View>
-              <TouchableOpacity
-                style={styles.cartIconContainer}
-                onPress={() => console.log("Add to cart")}
-              >
-                <FontAwesomeIcon
-                  icon={faCartPlus}
-                  size={20}
-                  style={styles.cartIcon}
-                />
-              </TouchableOpacity>
-            </View>
-          </TouchableOpacity>
-        ))}
-      </ScrollView>
+      <Text style={styles.heading}>You May Also Like</Text>
+      <FlatList
+        data={latestProducts}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id.toString()}
+        numColumns={2}
+        contentContainerStyle={styles.flatListContainer}
+      />
     </View>
   );
 }
@@ -134,7 +139,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#f0f0f0",
     marginVertical: 10,
-    paddingTop:10,
+    paddingTop: 10,
     paddingHorizontal: 20,
   },
   heading: {
@@ -142,18 +147,18 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     marginBottom: 10,
-    color: "green",
+    color: "#095a55",
   },
   product: {
-    marginBottom: 20,
+    // marginBottom: 20,
     backgroundColor: "#fff",
     borderRadius: 10,
     overflow: "hidden",
     elevation: 3,
-    width: 170,
+    width: "90%",
+    // height:"60%",
     padding: 10,
-    width: 180,
-    marginRight: 10, // Add margin between products
+    // marginRight: 10,
   },
   image: {
     width: "100%",
@@ -164,7 +169,7 @@ const styles = StyleSheet.create({
   },
   brand: {
     fontWeight: "bold",
-    color: "green",
+    color: "#095a55",
   },
   name: {
     marginBottom: 5,
@@ -175,21 +180,24 @@ const styles = StyleSheet.create({
   },
   starIcon: {
     marginRight: 2,
-    color: "green",
+    color: "#095a55",
   },
   price: {
     fontWeight: "bold",
-    color: "green",
+    color: "#095a55",
   },
   cartIconContainer: {
     position: "absolute",
     bottom: 10,
     right: 10,
-    backgroundColor: "green",
+    backgroundColor: "#095a55",
     borderRadius: 20,
     padding: 5,
   },
   cartIcon: {
     color: "#fff",
+  },
+  flatListContainer: {
+    paddingBottom: 20,
   },
 });

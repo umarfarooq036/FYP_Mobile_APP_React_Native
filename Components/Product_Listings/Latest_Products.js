@@ -306,8 +306,12 @@ const latestProducts = [
     price: 1330,
   },
 ];
-export default function Latest() {
-  const redirectToProductDetail = () => {
+export default function Latest({navigation}) {
+
+  
+  const redirectToProductDetail = (product) => {
+
+    navigation.navigate('SingleProduct' ,{data:product});
     // Implement navigation to product detail screen
   };
 
@@ -318,7 +322,7 @@ export default function Latest() {
         {latestProducts.map((product) => (
           <TouchableOpacity
             key={product.id}
-            onPress={redirectToProductDetail}
+            onPress={()=>{redirectToProductDetail(product)}}
             activeOpacity={1}
           >
             <View style={styles.product}>
