@@ -10,14 +10,21 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginTop: 20,
-    
   },
-  mainImage: {
+  mainImageContainer: {
     width: "90%",
-    height: 300,
+    aspectRatio: 16 / 9,
     borderRadius: 10,
     marginBottom: 20,
+    overflow: "hidden",
+    alignSelf: "center",
   },
+  mainImage: {
+    width: "100%",
+    height: "100%",
+    resizeMode: "cover",
+  },
+
   thumbnailContainer: {
     flexDirection: "row",
     justifyContent: "center",

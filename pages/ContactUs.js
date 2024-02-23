@@ -9,8 +9,9 @@ import {
   ScrollView,
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
+import BottomNavBar from "../Components/Navigation/BottomNavBar";
 
-const ContactUs = () => {
+const ContactUs = ({navigation}) => {
   return (
     <>
       <ScrollView style={{ backgroundColor: "#E5E5E5" }}>
@@ -88,6 +89,7 @@ const ContactUs = () => {
           </View>
         </View>
       </ScrollView>
+      <BottomNavBar navigation={navigation} />
     </>
   );
 };
@@ -138,7 +140,7 @@ const styles = StyleSheet.create({
   infoText: {
     color: "#555555",
     fontSize: 16,
-    fontWeight:"800"
+    fontWeight: "800",
   },
   social: {
     flexDirection: "row",
@@ -195,8 +197,8 @@ const styles = StyleSheet.create({
   },
   socialMediaLinks: {
     alignItems: "center",
-    marginTop:20,
-    gap:10
+    marginTop: 20,
+    gap: 10,
   },
   socialMediaText: {
     marginBottom: 10,

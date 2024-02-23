@@ -1,5 +1,12 @@
 import React from "react";
-import { View, Text, Image, TouchableOpacity, StyleSheet, FlatList } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  StyleSheet,
+  FlatList,
+} from "react-native";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faStar, faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import img1 from "../../assets/img/prod-10.jpg";
@@ -79,15 +86,15 @@ const latestProducts = [
 ];
 
 export default function YouMayLike({ navigation }) {
-
   const redirectToProductDetail = (product) => {
-
-    navigation.navigate('SingleProduct', { data: product });
+    navigation.navigate("SingleProduct", { data: product });
   };
 
   const renderItem = ({ item }) => (
     <TouchableOpacity
-      onPress={() => { redirectToProductDetail(item) }}
+      onPress={() => {
+        redirectToProductDetail(item);
+      }}
       activeOpacity={1}
       style={{ flex: 1, marginBottom: 20 }}
     >
@@ -120,7 +127,6 @@ export default function YouMayLike({ navigation }) {
       </View>
     </TouchableOpacity>
   );
-
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>You May Also Like</Text>
@@ -156,10 +162,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     overflow: "hidden",
     elevation: 3,
-    width: "90%",
-    // height:"60%",
+    width: 178,
     padding: 10,
-    // marginRight: 10,
   },
   image: {
     width: "100%",

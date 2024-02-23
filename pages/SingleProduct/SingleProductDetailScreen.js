@@ -225,7 +225,7 @@
 // THis is the flatlist replaced by ScrollView
 
 import { useRoute } from "@react-navigation/native";
-import React, { useState, useEffect , useRef} from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { View, Text, Image, TouchableOpacity, FlatList } from "react-native";
 import { styles } from "./style.module";
 import ThumbnailList from "./ThumbnailList"; // Import ThumbnailList component
@@ -284,11 +284,15 @@ const SingleProductDetailScreen = ({ navigation }) => {
       renderItem={({ item }) => (
         <View style={styles.container}>
           <View style={styles.productDetailsContainer}>
-            <Image
+            {/* <Image
               source={mainImage}
               style={styles.mainImage}
               resizeMode="contain"
-            />
+            /> */}
+            <View style={styles.mainImageContainer}>
+              <Image source={mainImage} style={styles.mainImage} />
+            </View>
+
             <ThumbnailList
               thumbnailImages={thumbnailImages}
               onThumbnailClick={handleThumbnailClick}

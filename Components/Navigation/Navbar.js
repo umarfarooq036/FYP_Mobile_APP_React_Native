@@ -180,15 +180,16 @@ const Navbar = ({ routeName, navigation }) => {
     setIsFocused(true);
   };
   const handleSubmitEditing = () => {
-    if(inputText === '/login')
-    {
+    // if(inputText === '/login')
+    // {
 
-    }
-    else if(inputText === '/register')
-    {
+    // }
+    // else if(inputText === '/register')
+    // {
 
-    }
+    // }
     Alert.alert("Text submitted", inputText);
+    setInputText("");
   };
 
   const handleBlur = () => {
@@ -205,7 +206,7 @@ const Navbar = ({ routeName, navigation }) => {
         <View style={styles.searchContainer}>
           <Feather name="search" size={20} color="#ccc" onPress={handleSubmitEditing}/>
           <TextInput
-            // value={inputText}
+            value={inputText}
             onFocus={handleFocus}
             onBlur={handleBlur}
             input
@@ -259,7 +260,7 @@ const Navbar = ({ routeName, navigation }) => {
       </View>
 
       {/* Second Line */}
-      <View style={styles.routesContainer}>
+      {/* <View style={styles.routesContainer}>
         <TouchableOpacity
           style={styles.routeContainer}
           onPress={() => navigation.navigate("Home")}
@@ -290,7 +291,7 @@ const Navbar = ({ routeName, navigation }) => {
         >
           <Text style={styles.routeText}>Contact</Text>
         </TouchableOpacity>
-      </View>
+      </View> */}
     </View>
   );
 };

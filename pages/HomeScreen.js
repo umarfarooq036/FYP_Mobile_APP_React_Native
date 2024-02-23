@@ -3,7 +3,7 @@ import CategoriesSection from "../Components/CategoryFiles/Categories";
 import Latest from "../Components/Product_Listings/Latest_Products";
 import Footer from "../Components/Footer";
 import Trending from "../Components/Product_Listings/Trending_Products";
-import Navbar from "../Components/Navbar";
+import Navbar from "../Components/Navigation/Navbar";
 import {
   SafeAreaView,
   StyleSheet,
@@ -12,6 +12,7 @@ import {
   Platform,
   ScrollView,
 } from "react-native";
+import BottomNavBar from "../Components/Navigation/BottomNavBar";
 
 const HomeScreen = ({ navigation }) => {
   return (
@@ -34,6 +35,7 @@ const HomeScreen = ({ navigation }) => {
             <Footer navigation={navigation}/>
         </View>
       </ScrollView>
+      <BottomNavBar navigation={navigation}/>
     </SafeAreaView>
   );
 };

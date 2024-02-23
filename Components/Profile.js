@@ -3,7 +3,7 @@ import { SafeAreaView, View, Text, Pressable, Image } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
-const Profile = () => {
+const Profile = ({navigation}) => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#121212' }}>
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginBottom: 20 }}>

@@ -7,6 +7,7 @@ import {
   StyleSheet,
   ScrollView,
   ImageBackground,
+  SafeAreaView,
 } from "react-native";
 
 import FashionImg1 from "../assets/Category-Fashion/fashion1.jpg";
@@ -16,6 +17,7 @@ import FashionImg4 from "../assets/Category-Fashion/fashion4.jpg";
 import FDImg1 from "../assets/Category-Food&Drink/food&drink1.jpg";
 import FDImg2 from "../assets/Category-Food&Drink/food&drink2.jpg";
 import FDImg3 from "../assets/Category-Food&Drink/food&drink3.jpg";
+import BottomNavBar from "../Components/Navigation/BottomNavBar";
 
 // Sample data representing shops
 const shops = [
@@ -148,31 +150,34 @@ const ShopCard = ({ shop }) => {
 
 const ShopsScreen = ({ navigation }) => {
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <View style={{ flexDirection: "column" }}>
-        <ImageBackground
-          source={require("../assets/img/bg-image.jpg")}
-          style={styles.background}
-          resizeMode="cover"
-        >
-          <View style={styles.overlay}>
-            <Text style={styles.heading}>#stay at Home - SHOP</Text>
-          </View>
-        </ImageBackground>
-      </View>
-      {Object.entries(groupedShops).map(([category, shops]) => (
-        <View key={category}>
-          <Text style={styles.category}>{category}</Text>
-          <FlatList
-            data={shops}
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            renderItem={({ item }) => <ShopCard shop={item} />}
-            keyExtractor={(item) => item.id.toString()}
-          />
+    <SafeAreaView style={{ flex: 1 }}>
+      <ScrollView contentContainerStyle={styles.container}>
+        <View style={{ flexDirection: "column" }}>
+          <ImageBackground
+            source={require("../assets/img/bg-image.jpg")}
+            style={styles.background}
+            resizeMode="cover"
+          >
+            <View style={styles.overlay}>
+              <Text style={styles.heading}>#stay at Home - SHOP</Text>
+            </View>
+          </ImageBackground>
         </View>
-      ))}
-    </ScrollView>
+        {Object.entries(groupedShops).map(([category, shops]) => (
+          <View key={category}>
+            <Text style={styles.category}>{category}</Text>
+            <FlatList
+              data={shops}
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              renderItem={({ item }) => <ShopCard shop={item} />}
+              keyExtractor={(item) => item.id.toString()}
+            />
+          </View>
+        ))}
+      </ScrollView>
+      <BottomNavBar navigation={navigation} />
+    </SafeAreaView>
   );
 };
 
