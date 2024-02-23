@@ -146,15 +146,22 @@ import {
   Image,
   TouchableOpacity,
   ToastAndroid,
+  Alert,
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
 
 const Navbar = ({ routeName, navigation }) => {
   const [profileDropdownVisible, setProfileDropdownVisible] = useState(false);
-
+  const [inputText, setInputText] = useState("");
+  const [isFocused, setIsFocused] = useState(false);
   const toggleProfileDropdown = () => {
     setProfileDropdownVisible(!profileDropdownVisible);
   };
+
+  // const inputQuery = (text) => {
+  //   setInputText(text);
+  //   console.log(inputText);
+  // };
 
   const handleProfileOptionSelect = (option) => {
     // Handle the profile dropdown option selection here
@@ -169,6 +176,24 @@ const Navbar = ({ routeName, navigation }) => {
     setProfileDropdownVisible(false); // Close dropdown after selection
   };
 
+  const handleFocus = () => {
+    setIsFocused(true);
+  };
+  const handleSubmitEditing = () => {
+    if(inputText === '/login')
+    {
+
+    }
+    else if(inputText === '/register')
+    {
+
+    }
+    Alert.alert("Text submitted", inputText);
+  };
+
+  const handleBlur = () => {
+    setIsFocused(false);
+  };
   return (
     <View style={styles.container}>
       {/* First Line */}
@@ -178,12 +203,17 @@ const Navbar = ({ routeName, navigation }) => {
           <Text style={styles.brandName}>Scrapify</Text>
         </View>
         <View style={styles.searchContainer}>
-          <Feather name="search" size={20} color="#ccc" />
+          <Feather name="search" size={20} color="#ccc" onPress={handleSubmitEditing}/>
           <TextInput
+            // value={inputText}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
             input
             style={styles.search}
             placeholder="Search"
-            caretHidden={true}
+            caretHidden={!isFocused}
+            onChangeText={setInputText}
+            onSubmitEditing={handleSubmitEditing}
           ></TextInput>
         </View>
         <View style={styles.iconsContainer}>
@@ -238,7 +268,7 @@ const Navbar = ({ routeName, navigation }) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.routeContainer}
-          onPress={() => navigation.navigate("Shop")}
+          onPress={() => navigation.navigate("Shops")}
         >
           <Text style={styles.routeText}>Shop</Text>
         </TouchableOpacity>

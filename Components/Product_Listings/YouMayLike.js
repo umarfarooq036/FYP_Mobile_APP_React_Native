@@ -81,6 +81,7 @@ const latestProducts = [
 export default function YouMayLike({ navigation }) {
 
   const redirectToProductDetail = (product) => {
+
     navigation.navigate('SingleProduct', { data: product });
   };
 

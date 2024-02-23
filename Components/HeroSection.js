@@ -7,34 +7,31 @@ import {
   Dimensions,
   StyleSheet,
   Animated,
+  TouchableOpacity,
 } from "react-native";
 
-const HeroSection = () => {
+const HeroSection = ({ navigation }) => {
   const scrollViewRef = useRef(null);
   const scrollX = useRef(new Animated.Value(0)).current;
 
   const sliderItems = [
     {
-      image:
-        "https://images.unsplash.com/photo-1554517222-e8b264ce5a35?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      imgSrc: require("../assets/img/prod-1.jpg"),
       title: "Trending Product 1",
       text: "Some description about the trending product 1.",
     },
     {
-      image:
-        "https://images.unsplash.com/photo-1530736563750-5705fa77c26c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fDEyMDAlMjB4JTIwNDAwfGVufDB8MHwwfHx8Mg%3D%3D",
+      imgSrc: require("../assets/img/prod-2.jpg"),
       title: "Trending Product 2",
       text: "Some description about the trending product 2.",
     },
     {
-      image:
-        "https://images.pexels.com/photos/2611690/pexels-photo-2611690.jpeg?auto=compress&cs=tinysrgb&w=600",
+      imgSrc: require("../assets/img/prod-3.jpg"),
       title: "Trending Product 3",
       text: "Some description about trending product 3.",
     },
     {
-      image:
-        "https://images.pexels.com/photos/8355599/pexels-photo-8355599.jpeg?auto=compress&cs=tinysrgb&w=600",
+      imgSrc: require("../assets/img/prod-4.jpg"),
       title: "Trending Product 4",
       text: "Some description about product 4.",
     },
@@ -63,6 +60,9 @@ const HeroSection = () => {
     return () => clearInterval(intervalId);
   }, []);
 
+  const productDetail = (item) => {
+    navigation.navigate("SingleProduct", { data: item });
+  };
   return (
     // <View style={styles.carouselContainer}>
     <ScrollView
@@ -77,12 +77,20 @@ const HeroSection = () => {
       )}
     >
       {sliderItems.map((item, index) => (
-        <View key={index} style={styles.slide}>
-          <Image source={{ uri: item.image }} style={styles.image} />
-          <View style={styles.caption}>
-            <Text style={styles.title}>{item.title}</Text>
-            <Text style={styles.text}>{item.text}</Text>
-          </View>
+        <View key={index}>
+          <TouchableOpacity
+            style={styles.slide}
+            activeOpacity={0.8}
+            onPress={() => {
+              productDetail(item);
+            }}
+          >
+            <Image source={item.imgSrc} style={styles.image} />
+            <View style={styles.caption}>
+              <Text style={styles.title}>{item.title}</Text>
+              <Text style={styles.text}>{item.text}</Text>
+            </View>
+          </TouchableOpacity>
         </View>
       ))}
     </ScrollView>
@@ -105,7 +113,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     resizeMode: "cover",
-    borderRadius:20,
+    borderRadius: 20,
   },
   caption: {
     position: "absolute",
@@ -115,9 +123,9 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0, 0, 0, 0.5)",
     paddingHorizontal: 10,
     paddingVertical: 5,
-    borderBottomEndRadius:20,
-    borderBottomStartRadius:20,
-    alignItems:'center'
+    borderBottomEndRadius: 20,
+    borderBottomStartRadius: 20,
+    alignItems: "center",
   },
   title: {
     color: "#fff",
