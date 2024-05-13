@@ -39,13 +39,10 @@ const HeroSection = ({ navigation }) => {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      // Calculate the index of the next slide
       const nextIndex =
         Math.floor((scrollX._value + 1) / Dimensions.get("window").width) %
         sliderItems.length;
-      // Calculate the target scroll position
       const targetScrollX = Dimensions.get("window").width * (nextIndex + 1);
-      // Scroll to the next item with animation
       scrollViewRef.current.scrollTo({
         x: targetScrollX,
         animated: true,
@@ -56,7 +53,6 @@ const HeroSection = ({ navigation }) => {
         }, 300);
       }
     }, 3000);
-
     return () => clearInterval(intervalId);
   }, []);
 
@@ -64,7 +60,6 @@ const HeroSection = ({ navigation }) => {
     navigation.navigate("SingleProduct", { data: item });
   };
   return (
-    // <View style={styles.carouselContainer}>
     <ScrollView
       ref={scrollViewRef}
       horizontal
@@ -94,10 +89,9 @@ const HeroSection = ({ navigation }) => {
         </View>
       ))}
     </ScrollView>
-    // </View>
   );
 };
-
+// -- STYLING --
 const styles = StyleSheet.create({
   scrollView: {
     flex: 1,

@@ -16,14 +16,6 @@ import BottomNavBar from "../Components/Navigation/BottomNavBar";
 
 const HomeScreen = ({ navigation }) => {
   return (
-    // <>
-    //   <Navbar navigation={navigation} />
-    //   <HeroSection />
-    //   <CategoriesSection />
-    //   <Latest />
-    //   <Trending />
-    //   <Footer />
-    // </>
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <View style={{ flex: 1 }}>
@@ -42,13 +34,11 @@ const HomeScreen = ({ navigation }) => {
 
 export default HomeScreen;
 
-
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "white",
-    paddingTop: Platform.OS === "android" ? 15 : 0, // Adjust the padding for Android devices
+    paddingTop: Platform.OS === "android" ? 15 : 0,
   },
   container: {
     flex: 1,

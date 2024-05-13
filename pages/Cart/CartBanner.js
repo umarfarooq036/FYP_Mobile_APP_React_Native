@@ -3,8 +3,6 @@ import { View, Text, ImageBackground, StyleSheet, Image } from "react-native";
 
 const CartBanner = () => {
   return (
-    // <View
-    // >
     <ImageBackground
       source={require("../../assets/img/banner/b5.jpg")}
       style={styles.imageBackground}
@@ -16,10 +14,9 @@ const CartBanner = () => {
         </Text>
       </View>
     </ImageBackground>
-    // </View>
   );
 };
-
+// -- STYLING --
 const styles = StyleSheet.create({
   imageBackground: {
     width: "100%",

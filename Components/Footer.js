@@ -7,7 +7,7 @@ import {
   StyleSheet,
 } from "react-native";
 import Svg, { Path } from "react-native-svg";
-import Icon from "react-native-vector-icons/FontAwesome"; // Import the icon library
+import Icon from "react-native-vector-icons/FontAwesome";
 
 export default function Footer() {
   return (
@@ -101,10 +101,10 @@ export default function Footer() {
     </View>
   );
 }
-
+// -- STYLING --
 const styles = StyleSheet.create({
   footerContainer: {
-    backgroundColor: "#088178", // Green background color
+    backgroundColor: "#088178",
     paddingVertical: 20,
   },
   footerContent: {
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontWeight: "900",
     marginBottom: 10,
-    color: "#fff", // White text color,
+    color: "#fff",
   },
   addressContainer: {
     flexDirection: "row",
@@ -132,20 +132,19 @@ const styles = StyleSheet.create({
     fontSize: 12,
     lineHeight: 16,
     color: "#cacaca",
-    // color: "#fff", // White text color
   },
   input: {
     borderWidth: 1,
-    borderColor: "#fff", // White border color
+    borderColor: "#fff",
     borderRadius: 5,
     paddingHorizontal: 10,
     paddingVertical: 8,
     marginBottom: 10,
-    color: "#000", // Black text color
+    color: "#000",
     width: "100%",
   },
   subscribeButton: {
-    backgroundColor: "#fff", // White background color
+    backgroundColor: "#fff",
     paddingVertical: 10,
     borderRadius: 5,
     alignItems: "center",
@@ -153,7 +152,7 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   subscribeButtonText: {
-    color: "#088178", // Green text color
+    color: "#088178",
   },
   newsletterContainer: {
     width: "100%",

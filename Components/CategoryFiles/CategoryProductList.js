@@ -99,52 +99,12 @@ const CategoryProductList = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>Products Related to {category.title}</Text>
-      {/* <ScrollView >
-        {latestProducts.map((product) => (
-          <TouchableOpacity
-            key={product.id}
-            onPress={() => {
-              redirectToProductDetail(product);
-            }}
-            activeOpacity={1}
-          >
-            <View style={styles.product}>
-              <Image source={product.imgSrc} style={styles.image} />
-              <View style={styles.detailsContainer}>
-                <Text style={styles.brand}>{product.brand}</Text>
-                <Text style={styles.name}>{product.name}</Text>
-                <View style={styles.ratingContainer}>
-                  {Array.from({ length: product.rating }, (_, index) => (
-                    <FontAwesomeIcon
-                      key={index}
-                      icon={faStar}
-                      style={styles.starIcon}
-                    />
-                  ))}
-                </View>
-                <Text style={styles.price}>${product.price}</Text>
-              </View>
-              <TouchableOpacity
-                style={styles.cartIconContainer}
-                onPress={() => console.log("Add to cart")}
-              >
-                <FontAwesomeIcon
-                  icon={faCartPlus}
-                  size={20}
-                  style={styles.cartIcon}
-                />
-              </TouchableOpacity>
-            </View>
-          </TouchableOpacity>
-        ))}
-      </ScrollView> */}
       <ScrollView showsVerticalScrollIndicator={false}>
         {chunkArray(latestProducts, 2).map((rowProducts, rowIndex) => (
           <View key={rowIndex} style={styles.row}>
             {rowProducts.map((product) => (
               <TouchableOpacity
                 key={product.id}
-                // onPress={() => redirectToProductDetail(product)}
                 activeOpacity={1}
                 style={styles.productContainer}
               >
@@ -183,7 +143,7 @@ const CategoryProductList = ({ navigation }) => {
     </View>
   );
 };
-
+// -- STYLING --
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -202,12 +162,10 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    // paddingHorizontal: 10,
-    // marginBottom: 10,
     gap:4
   },
   productContainer: {
-    width: '48%', // Adjust as needed with margins or paddings
+    width: '48%',
   },
   product: {
     marginBottom: 20,
@@ -218,7 +176,6 @@ const styles = StyleSheet.create({
     width: 170,
     padding: 10,
     width: 180,
-    // marginRight: 10, // Add margin between products
   },
   image: {
     width: "100%",

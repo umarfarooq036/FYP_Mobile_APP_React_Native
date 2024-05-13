@@ -19,7 +19,6 @@ const Products = () => {
       title: 'Product 3',
       description: 'Description for Product 3',
     },
-    // Add more product data as needed
   ];
 
   const renderItem = ({ item, index }) => {
@@ -29,7 +28,6 @@ const Products = () => {
         <View style={styles.cardContent}>
           <Text style={styles.title}>{item.title}</Text>
           <Text style={styles.description}>{item.description}</Text>
-          {/* Add buttons for Share and Learn More here */}
         </View>
       </TouchableOpacity>
     );
@@ -41,7 +39,7 @@ const Products = () => {
       <Carousel
         data={cardData}
         renderItem={renderItem}
-        sliderWidth={400} // This is the width of each item in the carousel
+        sliderWidth={400}
         itemWidth={300}
         loop={false}
         autoplay
@@ -54,7 +52,7 @@ const Products = () => {
     </View>
   );
 };
-
+// -- STYLING --
 const styles = StyleSheet.create({
   container: {
     marginBottom: 20,
@@ -66,8 +64,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   carouselContainer: {
-    // Add styles to control the width of the carousel
-    alignSelf: 'center', // Center the carousel horizontally
+    alignSelf: 'center',
   },
   card: {
     backgroundColor: '#fff',

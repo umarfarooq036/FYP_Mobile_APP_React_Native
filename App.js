@@ -14,27 +14,6 @@ import BottomNavBar from "./Components/Navigation/BottomNavBar";
 export default function App() {
   const Stack = createNativeStackNavigator();
   return (
-    // <SafeAreaView style={styles.container}>
-    //   <ScrollView>
-    //     <View style={{ flex: 1 }}>
-    //       {/* <Navbar/>
-    //       <NavigationContainer>
-    //         <Stack.Navigator>
-    //           <Stack.Screen name="Home" component={HomeScreen} />
-    //           <Stack.Screen name="Profile" component={Profile} />
-    //         </Stack.Navigator>
-    //       </NavigationContainer> */}
-    //       <NavigationContainer>
-    //         <Navbar />
-    //         <HeroSection />
-    //         <CategoriesSection />
-    //         <Latest />
-    //         <Trending />
-    //         <Footer />
-    //       </NavigationContainer>
-    //     </View>
-    //   </ScrollView>
-    // </SafeAreaView>
     <SafeAreaProvider>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Home">
@@ -51,9 +30,7 @@ export default function App() {
             name="CategoryProductList"
             component={CategoryProductList}
           />
-          {/* <Stack.Screen name="BottomNavBar" component={BottomNavBar} /> */}
         </Stack.Navigator>
-        {/* <BottomNavBar/> */}
       </NavigationContainer>
     </SafeAreaProvider>
   );

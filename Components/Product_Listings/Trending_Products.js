@@ -81,8 +81,6 @@ const latestProducts = [
 export default function Trending({navigation}) {
   const redirectToProductDetail = (product) => {
     navigation.navigate('SingleProduct' ,{data:product});
-
-    // Implement navigation to product detail screen
   };
 
   return (
@@ -128,7 +126,7 @@ export default function Trending({navigation}) {
     </View>
   );
 }
-
+// -- STYLING --
 const styles = StyleSheet.create({
   container: {
     flex: 1,

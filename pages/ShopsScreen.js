@@ -19,7 +19,6 @@ import FDImg2 from "../assets/Category-Food&Drink/food&drink2.jpg";
 import FDImg3 from "../assets/Category-Food&Drink/food&drink3.jpg";
 import BottomNavBar from "../Components/Navigation/BottomNavBar";
 
-// Sample data representing shops
 const shops = [
   {
     id: 1,
@@ -128,7 +127,6 @@ const shops = [
   },
 ];
 
-// Group shops by category
 const groupedShops = shops.reduce((groups, shop) => {
   const { category } = shop;
   if (!groups[category]) {
@@ -180,7 +178,7 @@ const ShopsScreen = ({ navigation }) => {
     </SafeAreaView>
   );
 };
-
+// --STYLING --
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
@@ -202,8 +200,8 @@ const styles = StyleSheet.create({
     padding: 10,
     marginHorizontal: 5,
     width: 150,
-    elevation: 2, // for Android shadow
-    backgroundColor: "#fff", // background color of cards
+    elevation: 2,
+    backgroundColor: "#fff",
   },
   image: {
     width: "100%",
@@ -223,10 +221,10 @@ const styles = StyleSheet.create({
   },
   background: {
     width: "100%",
-    height: 200, // Adjust the height as needed
+    height: 200,
   },
   overlay: {
-    backgroundColor: "rgba(0, 0, 0, 0.5)", // Adjust the opacity as needed
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
     padding: 14,
     width: "100%",
     position: "absolute",

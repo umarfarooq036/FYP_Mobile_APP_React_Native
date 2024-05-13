@@ -140,7 +140,7 @@ export default function YouMayLike({ navigation }) {
     </View>
   );
 }
-
+// -- STYLING --
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -157,7 +157,6 @@ const styles = StyleSheet.create({
     color: "#095a55",
   },
   product: {
-    // marginBottom: 20,
     backgroundColor: "#fff",
     borderRadius: 10,
     overflow: "hidden",

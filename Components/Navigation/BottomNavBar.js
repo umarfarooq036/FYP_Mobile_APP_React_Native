@@ -46,7 +46,7 @@ const BottomNavBar = ({ navigation }) => {
     </View>
   );
 };
-
+// -- STYLING --
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
@@ -55,8 +55,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     borderTopWidth: 1,
     borderTopColor: "#ccc",
-    elevation: 8, // For Android elevation
-    shadowColor: "#000", // For iOS shadow
+    elevation: 8,
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: -3,
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     color: "#333",
   },
   activeIcon: {
-    color: "#088178", // Change color for active icon
+    color: "#088178",
   },
   text: {
     fontSize: 12,
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   activeText: {
-    color: "#088178", // Change color for active text
+    color: "#088178",
   },
 });
 

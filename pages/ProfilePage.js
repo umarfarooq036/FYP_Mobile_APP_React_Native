@@ -4,7 +4,6 @@ import Profile from "../Components/Profile";
 const ProfilePage = () => {
   return (
     <>
-      {/* <Text>This is the profile page.</Text> */}
       <Profile/>
     </>
   );

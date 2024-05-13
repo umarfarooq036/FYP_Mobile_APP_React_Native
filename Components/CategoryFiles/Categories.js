@@ -61,7 +61,7 @@ const CategoriesSection = ({navigation}) => {
     </View>
   );
 };
-
+// -- STYLING --
 const styles = StyleSheet.create({
   container: {
     paddingVertical: 10,
@@ -92,7 +92,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
     textAlign: "center",
-    // color:"green"
   },
 });
 

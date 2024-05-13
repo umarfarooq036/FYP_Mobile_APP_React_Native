@@ -81,26 +81,6 @@ export default function Cart({navigation}) {
         <CartBanner />
         <View style={styles.content}>
           <Text style={styles.header}>Your Cart</Text>
-          {/* {productsData.map((product) => (
-            <View key={product.id} style={styles.productContainer}>
-              <TouchableOpacity onPress={() => removeProduct(product.id)} style={styles.removeButton}>
-                <MaterialIcons name="delete" size={24} color="#333" />
-              </TouchableOpacity>
-              <Image source={product.image} style={styles.productImage} />
-              <Text style={styles.productName}>{product.name}</Text>
-              <Text style={styles.productPrice}>Rs. {product.price}</Text>
-              <View style={styles.quantityContainer}>
-                <TouchableOpacity onPress={() => decreaseQuantity(product.id)}>
-                  <MaterialIcons name="remove" size={24} color="#007bff" />
-                </TouchableOpacity>
-                <Text style={styles.quantity}>{quantities[product.id]}</Text>
-                <TouchableOpacity onPress={() => increaseQuantity(product.id)}>
-                  <MaterialIcons name="add" size={24} color="#007bff" />
-                </TouchableOpacity>
-              </View>
-              <Text style={styles.productTotal}>Total: Rs. {product.price * quantities[product.id]}</Text>
-            </View>
-          ))} */}
           {productsData.length > 0 ? (
             productsData.map((product) => (
               <View key={product.id} style={styles.productContainer}>
@@ -142,7 +122,6 @@ export default function Cart({navigation}) {
               </TouchableOpacity>
             </>
           )}
-
           <View style={styles.totalContainer}>
             <Text style={styles.totalText}>Total Bill:</Text>
             <Text style={styles.totalAmount}>Rs. {getTotalBill()}</Text>
@@ -155,7 +134,7 @@ export default function Cart({navigation}) {
     </SafeAreaView>
   );
 }
-
+// -- STYLING --
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -184,7 +163,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
-    position: "relative", // Added for positioning the delete button
+    position: "relative",
   },
   removeButton: {
     position: "absolute",

@@ -93,18 +93,17 @@ const ContactUs = ({navigation}) => {
     </>
   );
 };
-
+// --STYLING --
 const styles = StyleSheet.create({
   section: {
     marginTop: 20,
-    backgroundColor: "#E5E5E5", // Change the background color to green
+    backgroundColor: "#E5E5E5",
     flex: 1,
     paddingHorizontal: 20,
   },
   container: {
-    flexDirection: "colomn", // Correct the typo 'column'
+    flexDirection: "colomn",
     flexWrap: "wrap",
-    // backgroundColor: "#095a55", // Change the background color to green
   },
   contactInfo: {
     flex: 1,
@@ -114,7 +113,6 @@ const styles = StyleSheet.create({
     elevation: 10,
     marginBottom: 20,
     alignItems: "center",
-    // backgroundColor: "#095a55", // Change the background color to green
   },
   heading: {
     color: "#088178",
@@ -135,7 +133,7 @@ const styles = StyleSheet.create({
     width: 30,
     height: 30,
     marginRight: 10,
-    tintColor: "#088178", // Change the icon color to green
+    tintColor: "#088178",
   },
   infoText: {
     color: "#555555",
@@ -150,7 +148,7 @@ const styles = StyleSheet.create({
     width: 30,
     height: 30,
     marginRight: 15,
-    tintColor: "#088178", // Change the icon color to green
+    tintColor: "#088178",
   },
   contactForm: {
     flex: 1,
@@ -189,8 +187,8 @@ const styles = StyleSheet.create({
   submitBtn: {
     paddingVertical: 15,
     paddingHorizontal: 20,
-    backgroundColor: "#088178", // Change the button background color to white
-    color: "#FFFF", // Change the button text color to green
+    backgroundColor: "#088178",
+    color: "#FFFF",
     textAlign: "center",
     borderRadius: 5,
     overflow: "hidden",
