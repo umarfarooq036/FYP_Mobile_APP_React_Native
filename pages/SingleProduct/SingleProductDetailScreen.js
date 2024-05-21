@@ -108,41 +108,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import React, { useState, useEffect, useRef } from 'react';
 import {
     StyleSheet, Button, View, StatusBar, ToastAndroid, Dimensions, Image, TouchableOpacity,
