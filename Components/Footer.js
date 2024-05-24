@@ -78,7 +78,7 @@ export default function Footer() {
         </View>
         <View style={styles.footerSection}>
           <View style={{ paddingLeft: 50 }}>
-            <Text style={styles.footerHeading}>Quick Link</Text>
+            <Text style={styles.footerHeading}>Quick Links</Text>
             <View>
               <Text style={{color: "white"}}>Home</Text>
               <Text style={{color: "white"}}>About Us</Text>
@@ -89,7 +89,7 @@ export default function Footer() {
           </View>
         </View>
         <View style={styles.footerSection}>
-          <Text style={styles.footerHeading}>NewsLetter</Text>
+          <Text style={styles.newsletterHeading}>Newsletter</Text>
           <View style={styles.newsletterContainer}>
             <TextInput
               style={styles.input}
@@ -150,6 +150,13 @@ const styles = StyleSheet.create({
     fontWeight: "900",
     marginBottom: 10,
     color: "#fff",
+  },
+  newsletterHeading: {
+    textAlign: "center",
+    fontWeight: "900",
+    marginBottom: 10,
+    color: "#fff",
+    alignSelf: "center", // Center the "Newsletter" heading
   },
   addressContainer: {
     flexDirection: "row",
