@@ -96,10 +96,11 @@ export default function Footer() {
               placeholder="Your Email Address"
               placeholderTextColor="grey"
             />
-            <TouchableOpacity
+            {/* <TouchableOpacity
               style={[
                 styles.subscribeButton,
-                buttonPressed ? styles.subscribeButtonPressed : null,
+                // buttonPressed ? styles.subscribeButtonPressed : null,
+                buttonPressed && styles.subscribeButtonTextPressed
               ]}
               onPressIn={handlePressIn}
               onPressOut={handlePressOut}
@@ -113,7 +114,21 @@ export default function Footer() {
               >
                 Subscribe
               </Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
+            <TouchableOpacity
+      style={[styles.subscribeButton, buttonPressed && styles.subscribeButtonPressed]}
+      onPressIn={handlePressIn}
+      onPressOut={handlePressOut}
+    >
+      <Text
+        style={[
+          styles.subscribeButtonText,
+          buttonPressed && styles.subscribeButtonTextPressed
+        ]}
+      >
+        Subscribe
+      </Text>
+    </TouchableOpacity>
           </View>
         </View>
       </View>
@@ -191,6 +206,8 @@ const styles = StyleSheet.create({
   },
   subscribeButtonPressed: {
     backgroundColor: "#FFC208",
+    // Add text color change
+    color: "#000",
   },
   subscribeButtonText: {
     color: "#088178",
@@ -208,3 +225,77 @@ const styles = StyleSheet.create({
     gap: 10,
   },
 });
+
+
+
+
+
+
+// import React, { useState } from "react";
+// import {
+//   View,
+//   Text,
+//   TextInput,
+//   TouchableOpacity,
+//   StyleSheet,
+// } from "react-native";
+// import Svg, { Path } from "react-native-svg";
+// import Icon from "react-native-vector-icons/FontAwesome";
+
+// export default function Footer() {
+//   const [buttonPressed, setButtonPressed] = useState(false);
+
+//   const handlePressIn = () => {
+//     setButtonPressed(true);
+//   };
+
+//   const handlePressOut = () => {
+//     setButtonPressed(false);
+//   };
+
+//   return (
+//     <View style={styles.footerContainer}>
+//       <View style={styles.footerContent}>
+//         {/* Your other content */}
+//         <TouchableOpacity
+//           style={[
+//             styles.subscribeButton,
+//             buttonPressed && styles.subscribeButtonPressed,
+//           ]}
+//           onPressIn={handlePressIn}
+//           onPressOut={handlePressOut}
+//         >
+//           <Text
+//             style={[
+//               styles.subscribeButtonText,
+//               buttonPressed && styles.subscribeButtonTextPressed,
+//             ]}
+//           >
+//             Subscribe
+//           </Text>
+//         </TouchableOpacity>
+//       </View>
+//     </View>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+//   // Your existing styles
+//   subscribeButton: {
+//     backgroundColor: "#fff",
+//     paddingVertical: 10,
+//     borderRadius: 5,
+//     alignItems: "center",
+//     marginBottom: 10,
+//     width: "100%",
+//   },
+//   subscribeButtonPressed: {
+//     backgroundColor: "#FFC208",
+//   },
+//   subscribeButtonText: {
+//     color: "#088178",
+//   },
+//   subscribeButtonTextPressed: {
+//     color: "#000",
+//   },
+// });
