@@ -1,39 +1,36 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
+
+const { width, height } = Dimensions.get("window");
+
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#ffffff",
   },
   mainImageContainer: {
+    width,
+    height: height * 0.4, // Adjust the height to cover more of the screen height
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 20,
-  },
-  mainImageContainer: {
-    width: "90%",
-    aspectRatio: 16 / 9,
-    borderRadius: 10,
-    marginBottom: 20,
-    overflow: "hidden",
-    alignSelf: "center",
   },
   mainImage: {
     width: "100%",
     height: "100%",
-    resizeMode: "cover",
+    resizeMode: "contain", // Use "contain" to ensure the full image is displayed without cropping
   },
-
-  thumbnailContainer: {
+  indicatorContainer: {
+    position: "absolute",
+    bottom: 10,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 20,
+    width: "100%",
   },
-  thumbnailImage: {
-    width: 70,
-    height: 70,
-    marginHorizontal: 5,
+  indicator: {
+    height: 10,
     borderRadius: 5,
+    backgroundColor: "#fff",
+    marginHorizontal: 5,
   },
   productDetailsContainer: {
     paddingHorizontal: 20,
