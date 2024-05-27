@@ -14,17 +14,26 @@ const SingleProductDetailScreen = ({ navigation }) => {
   const route = useRoute();
   const { data } = route.params;
   const [quantity, setQuantity] = useState(1);
+  const [selectedColor, setSelectedColor] = useState("Beige");
   const flatListRef = useRef(null);
   const scrollX = useRef(new Animated.Value(0)).current;
 
+  const colors = [
+    { id: 'Green', color: '#767762' },
+    { id: 'Black', color: '#000000' },
+    { id: 'Maroon', color: '#8B2943' },
+    { id: 'Blue', color: '#82A5AD' }
+  ];
+
+  const thumbnailImages = [
+    { id: 'main', src: data.imgSrc },
+    { id: '1', src: prod01Full },
+    { id: '2', src: prod01Full02 },
+    { id: '3', src: prod01Full03 },
+    { id: '4', src: prod01Full04 },
+  ];
+
   useEffect(() => {
-    const thumbnailImages = [
-      { id: 'main', src: data.imgSrc },
-      { id: '1', src: prod01Full },
-      { id: '2', src: prod01Full02 },
-      { id: '3', src: prod01Full03 },
-      { id: '4', src: prod01Full04 },
-    ];
     console.log(thumbnailImages);
   }, [data]);
 
@@ -38,13 +47,20 @@ const SingleProductDetailScreen = ({ navigation }) => {
     }
   };
 
-  const thumbnailImages = [
-    { id: 'main', src: data.imgSrc },
-    { id: '1', src: prod01Full },
-    { id: '2', src: prod01Full02 },
-    { id: '3', src: prod01Full03 },
-    { id: '4', src: prod01Full04 },
-  ];
+  const getColorName = (colorId) => {
+    switch (colorId) {
+      case 'Green':
+        return 'Green';
+      case 'Black':
+        return 'Black';
+      case 'Maroon':
+        return 'Maroon';
+      case 'Blue':
+        return 'Blue';
+      default:
+        return 'Color';
+    }
+  };
 
   return (
     <FlatList
@@ -89,8 +105,32 @@ const SingleProductDetailScreen = ({ navigation }) => {
           </View>
           <View style={styles.productDetailsContainer}>
             <Text style={styles.productName}>ELLEGANCE FLORA - GREEN</Text>
-            <Text style={styles.productPrice}>PKR 9,845.00</Text>
+            <View style={styles.priceAndRatingContainer}>
+              <Text style={styles.productPrice}>PKR 9,845.00</Text>
+              <View style={styles.ratingContainer}>
+                <Text style={styles.starRating}>★★★★☆</Text>
+                <Text style={styles.reviewCount}>(18)</Text>
+              </View>
+            </View>
+            <Text style={styles.sectionTitle}>Colors: {getColorName(selectedColor)}</Text>
+            <View style={styles.colorOptionsContainer}>
+              {colors.map((color) => (
+                <TouchableOpacity
+                  key={color.id}
+                  style={[
+                    styles.colorOption,
+                    selectedColor === color.id && styles.selectedColorOption,
+                    { backgroundColor: color.color }
+                  ]}
+                  onPress={() => setSelectedColor(color.id)}
+                />
+              ))}
+            </View>
+            <Text style={styles.sectionTitle}>Sizes</Text>
             <View style={styles.sizeOptionsContainer}>
+              <TouchableOpacity style={styles.sizeOption}>
+                <Text style={styles.sizeOptionText}>XS</Text>
+              </TouchableOpacity>
               <TouchableOpacity style={styles.sizeOption}>
                 <Text style={styles.sizeOptionText}>S</Text>
               </TouchableOpacity>
@@ -162,10 +202,50 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
   },
+  priceAndRatingContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginVertical: 10,
+  },
   productPrice: {
     fontSize: 20,
     color: '#888',
-    marginVertical: 10,
+  },
+  ratingContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  starRating: {
+    fontSize: 18,
+    color: '#000',
+  },
+  reviewCount: {
+    fontSize: 14,
+    color: '#888',
+    marginLeft: 5,
+  },
+  sectionTitle: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginVertical: 8,
+  },
+  colorOptionsContainer: {
+    flexDirection: 'row',
+    marginVertical: 8,
+  },
+  colorOption: {
+    borderWidth: 1,
+    borderColor: '#ddd',
+    borderRadius: 20,
+    padding: 10,
+    marginHorizontal: 5,
+    width: 40,
+    height: 40,
+  },
+  selectedColorOption: {
+    borderColor: '#333',
+    borderWidth: 2,
   },
   sizeOptionsContainer: {
     flexDirection: 'row',
@@ -174,9 +254,13 @@ const styles = StyleSheet.create({
   sizeOption: {
     borderWidth: 1,
     borderColor: '#ddd',
-    borderRadius: 5,
+    borderRadius: 50,
     padding: 10,
     marginHorizontal: 5,
+    width: 40,
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   sizeOptionText: {
     fontSize: 14,
