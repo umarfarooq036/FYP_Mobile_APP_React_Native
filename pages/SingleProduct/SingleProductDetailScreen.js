@@ -1,6 +1,7 @@
 import { useRoute } from "@react-navigation/native";
 import React, { useState, useRef, useEffect } from "react";
 import { View, Text, Image, TouchableOpacity, FlatList, Dimensions, Animated, StyleSheet } from "react-native";
+import { Platform } from 'react-native';
 import YouMayLike from "../../Components/Product_Listings/YouMayLike";
 
 const prod01Full = require("../../assets/img/prod-01-full.jpg");
@@ -15,8 +16,13 @@ const SingleProductDetailScreen = ({ navigation }) => {
   const { data } = route.params;
   const [quantity, setQuantity] = useState(1);
   const [selectedColor, setSelectedColor] = useState("Beige");
+  const [selectedSize, setSelectedSize] = useState(null);
+  const [addToCartPressed, setAddToCartPressed] = useState(false);
   const flatListRef = useRef(null);
   const scrollX = useRef(new Animated.Value(0)).current;
+  const addToCart = (item) => {
+    console.log("Item added to cart:", item);
+  };
 
   const colors = [
     { id: 'Green', color: '#767762' },
@@ -24,6 +30,8 @@ const SingleProductDetailScreen = ({ navigation }) => {
     { id: 'Maroon', color: '#8B2943' },
     { id: 'Blue', color: '#82A5AD' }
   ];
+
+  const sizes = ['XS', 'S', 'M', 'L'];
 
   const thumbnailImages = [
     { id: 'main', src: data.imgSrc },
@@ -38,7 +46,9 @@ const SingleProductDetailScreen = ({ navigation }) => {
   }, [data]);
 
   const handleIncreaseQuantity = () => {
-    setQuantity(quantity + 1);
+    if (quantity < 6) {
+      setQuantity(quantity + 1);
+    }
   };
 
   const handleDecreaseQuantity = () => {
@@ -62,6 +72,19 @@ const SingleProductDetailScreen = ({ navigation }) => {
     }
   };
 
+  const handleAddToCartPress = () => {
+    const newItem = {
+      id: data.id,
+      name: data.name,
+      price: data.price,
+      quantity: quantity,
+      color: selectedColor,
+      size: selectedSize,
+    };
+    addToCart(newItem);
+    setAddToCartPressed(true);
+  };
+  
   return (
     <FlatList
       data={[{ key: "mainView" }]}
@@ -112,7 +135,7 @@ const SingleProductDetailScreen = ({ navigation }) => {
                 <Text style={styles.reviewCount}>(18)</Text>
               </View>
             </View>
-            <Text style={styles.sectionTitle}>Colors: {getColorName(selectedColor)}</Text>
+            <Text style={styles.sectionTitle}>Color: {getColorName(selectedColor)}</Text>
             <View style={styles.colorOptionsContainer}>
               {colors.map((color) => (
                 <TouchableOpacity
@@ -126,33 +149,44 @@ const SingleProductDetailScreen = ({ navigation }) => {
                 />
               ))}
             </View>
-            <Text style={styles.sectionTitle}>Sizes</Text>
+            <Text style={styles.sectionTitle}>Size: {selectedSize}</Text>
             <View style={styles.sizeOptionsContainer}>
-              <TouchableOpacity style={styles.sizeOption}>
-                <Text style={styles.sizeOptionText}>XS</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.sizeOption}>
-                <Text style={styles.sizeOptionText}>S</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.sizeOption}>
-                <Text style={styles.sizeOptionText}>M</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.sizeOption}>
-                <Text style={styles.sizeOptionText}>L</Text>
-              </TouchableOpacity>
-              {/* Add more size options as needed */}
+              {sizes.map((size) => (
+                <TouchableOpacity
+                  key={size}
+                  style={[
+                    styles.sizeOption,
+                    selectedSize === size && styles.selectedSizeOption,
+                  ]}
+                  onPress={() => setSelectedSize(size)}
+                >
+                  <Text style={styles.sizeOptionText}>{size}</Text>
+                </TouchableOpacity>
+              ))}
             </View>
             <View style={styles.quantityContainer}>
-              <TouchableOpacity onPress={handleDecreaseQuantity}>
-                <Text style={styles.quantityButton}>-</Text>
+              <TouchableOpacity onPress={handleDecreaseQuantity} style={styles.quantityButton}>
+                <Text style={styles.quantityButtonText}>-</Text>
               </TouchableOpacity>
-              <Text style={styles.quantityButton}>{quantity}</Text>
-              <TouchableOpacity onPress={handleIncreaseQuantity}>
-                <Text style={styles.quantityButton}>+</Text>
+              <View style={styles.quantityBox}>
+                <Text style={styles.quantityText}>{quantity}</Text>
+              </View>
+              <TouchableOpacity onPress={handleIncreaseQuantity} style={styles.quantityButton}>
+                <Text style={styles.quantityButtonText}>+</Text>
               </TouchableOpacity>
-            </View>
-            <TouchableOpacity style={styles.addToCartButton}>
-              <Text style={styles.addToCartButtonText}>Add to Cart</Text>
+            </View>           
+            <TouchableOpacity
+              onPress={handleAddToCartPress}
+              activeOpacity={1}
+              style={[
+                styles.addToCartButton,
+                addToCartPressed && { backgroundColor: '#0c520f' }, // Change background color to green if pressed
+                addToCartPressed && { elevation: 5 } // Add elevation when pressed
+              ]}
+            >
+              <Text style={[styles.addToCartButtonText, { color: addToCartPressed ? '#fff' : '#fff' }]}>
+                Add to Cart
+              </Text>
             </TouchableOpacity>
             <Text style={styles.productDescription}>Product Details:</Text>
             <Text style={styles.productDetailsText}>
@@ -244,7 +278,7 @@ const styles = StyleSheet.create({
     height: 40,
   },
   selectedColorOption: {
-    borderColor: '#333',
+    borderColor: '#777777',
     borderWidth: 2,
   },
   sizeOptionsContainer: {
@@ -262,17 +296,41 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  selectedSizeOption: {
+    borderColor: '#777777',
+    borderWidth: 2,
+  },
   sizeOptionText: {
     fontSize: 14,
   },
   quantityContainer: {
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'left',
+    justifyContent: 'left',
     marginVertical: 10,
+    marginHorizontal: 10,
   },
   quantityButton: {
+    backgroundColor: '#ddd',
+    paddingHorizontal: 15,
+    paddingVertical: 5,
+    borderRadius: 5,
+    marginHorizontal: 5,
+  },
+  quantityButtonText: {
     fontSize: 18,
-    paddingHorizontal: 10,
+    fontWeight: 'bold',
+  },
+  quantityBox: {
+    borderWidth: 1,
+    borderColor: '#ddd',
+    paddingHorizontal: 15,
+    paddingVertical: 5,
+    borderRadius: 5,
+  },
+  quantityText: {
+    fontSize: 18,
+    fontWeight: 'bold',
   },
   addToCartButton: {
     backgroundColor: '#333',
