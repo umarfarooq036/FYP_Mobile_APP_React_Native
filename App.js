@@ -21,7 +21,7 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <Provider store={store}> {/* Wrap the entire NavigationContainer with Provider */}
+    <Provider store={store}>
       <SafeAreaProvider>
         <NavigationContainer>
           <Stack.Navigator initialRouteName="Home">
@@ -34,7 +34,7 @@ export default function App() {
             <Stack.Screen name="CategoryProductList" component={CategoryProductList} />
             <Stack.Screen name="MyProduct" component={MyProduct} />
             <Stack.Screen name="AddNewProduct" component={AddNewProduct} />
-            <Stack.Screen name="ShopePage" component={ShopPage} options={{ title: 'Shop Details' }} />
+            <Stack.Screen name="ShopPage" component={ShopPage} options={{ title: 'Shop Details' }} />
           </Stack.Navigator>
         </NavigationContainer>
       </SafeAreaProvider>

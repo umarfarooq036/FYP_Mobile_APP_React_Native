@@ -1,7 +1,6 @@
 import { useRoute } from "@react-navigation/native";
 import React, { useState, useRef, useEffect } from "react";
 import { View, Text, Image, TouchableOpacity, FlatList, Dimensions, Animated, StyleSheet } from "react-native";
-import { Platform } from 'react-native';
 import YouMayLike from "../../Components/Product_Listings/YouMayLike";
 
 const prod01Full = require("../../assets/img/prod-01-full.jpg");
@@ -127,9 +126,9 @@ const SingleProductDetailScreen = ({ navigation }) => {
             </View>
           </View>
           <View style={styles.productDetailsContainer}>
-            <Text style={styles.productName}>ELLEGANCE FLORA - GREEN</Text>
+            <Text style={styles.productName}>{data.name}</Text>
             <View style={styles.priceAndRatingContainer}>
-              <Text style={styles.productPrice}>PKR 9,845.00</Text>
+              <Text style={styles.productPrice}>{`PKR ${data.price}`}</Text>
               <View style={styles.ratingContainer}>
                 <Text style={styles.starRating}>★★★★☆</Text>
                 <Text style={styles.reviewCount}>(18)</Text>
@@ -180,8 +179,8 @@ const SingleProductDetailScreen = ({ navigation }) => {
               activeOpacity={1}
               style={[
                 styles.addToCartButton,
-                addToCartPressed && { backgroundColor: '#0c520f' }, // Change background color to green if pressed
-                addToCartPressed && { elevation: 5 } // Add elevation when pressed
+                addToCartPressed && { backgroundColor: '#0c520f' },
+                addToCartPressed && { elevation: 5 }
               ]}
             >
               <Text style={[styles.addToCartButtonText, { color: addToCartPressed ? '#fff' : '#fff' }]}>
@@ -305,10 +304,8 @@ const styles = StyleSheet.create({
   },
   quantityContainer: {
     flexDirection: 'row',
-    alignItems: 'left',
-    justifyContent: 'left',
+    alignItems: 'center',
     marginVertical: 10,
-    marginHorizontal: 10,
   },
   quantityButton: {
     backgroundColor: '#ddd',
