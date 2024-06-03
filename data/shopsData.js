@@ -1,4 +1,3 @@
-// shopsData.js
 import FashionImg1 from "../assets/Category-Fashion/fashion1.jpg";
 import FashionImg2 from "../assets/Category-Fashion/fashion2.jpg";
 import FashionImg3 from "../assets/Category-Fashion/fashion3.jpg";
