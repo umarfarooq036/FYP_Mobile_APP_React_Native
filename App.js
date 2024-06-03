@@ -16,6 +16,8 @@ import ShopPage from "./pages/SingleShopPage/ShopePage";
 
 import store from "./data/store";
 import UserProfileScreen from "./pages/UserProfileScreen";
+import Signin from "./pages/signin";
+import Signup from "./pages/signup";
 
 const Stack = createNativeStackNavigator();
 
@@ -35,6 +37,8 @@ export default function App() {
             <Stack.Screen name="MyProduct" component={MyProduct} />
             <Stack.Screen name="AddNewProduct" component={AddNewProduct} />
             <Stack.Screen name="ShopPage" component={ShopPage} options={{ title: 'Shop Details' }} />
+            <Stack.Screen name="Signup" component={Signup} />
+            <Stack.Screen name="Signin" component={Signin} />
           </Stack.Navigator>
         </NavigationContainer>
       </SafeAreaProvider>
