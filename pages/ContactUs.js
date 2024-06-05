@@ -93,7 +93,7 @@ const ContactUs = ({navigation}) => {
     </>
   );
 };
-// --STYLING --
+
 const styles = StyleSheet.create({
   section: {
     marginTop: 20,

@@ -91,7 +91,7 @@ const HeroSection = ({ navigation }) => {
     </ScrollView>
   );
 };
-// -- STYLING --
+
 const styles = StyleSheet.create({
   scrollView: {
     flex: 1,

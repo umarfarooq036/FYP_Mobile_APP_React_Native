@@ -126,7 +126,7 @@ export default function Trending({navigation}) {
     </View>
   );
 }
-// -- STYLING --
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
     width: 170,
     padding: 10,
     width: 180,
-    marginRight: 10, // Add margin between products
+    marginRight: 10,
   },
   image: {
     width: "100%",

@@ -52,7 +52,7 @@ const Products = () => {
     </View>
   );
 };
-// -- STYLING --
+
 const styles = StyleSheet.create({
   container: {
     marginBottom: 20,

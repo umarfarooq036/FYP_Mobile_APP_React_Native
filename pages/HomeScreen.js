@@ -4,6 +4,8 @@ import Latest from "../Components/Product_Listings/Latest_Products";
 import Footer from "../Components/Footer";
 import Trending from "../Components/Product_Listings/Trending_Products";
 import Navbar from "../Components/Navigation/Navbar";
+import { selectUser } from "../redux/user/userSlice";
+
 import {
   SafeAreaView,
   StyleSheet,

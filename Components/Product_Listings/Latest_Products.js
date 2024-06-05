@@ -126,15 +126,14 @@ export default function Latest({navigation}) {
     </View>
   );
 }
-// -- STYLING --
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#f0f0f0",
     marginVertical: 10,
     paddingTop:10,
-    paddingHorizontal: 20,
-    // paddingStart:22
+    paddingHorizontal: 20, 
   },
   heading: {
     fontSize: 24,

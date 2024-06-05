@@ -143,7 +143,7 @@ const CategoryProductList = ({ navigation }) => {
     </View>
   );
 };
-// -- STYLING --
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

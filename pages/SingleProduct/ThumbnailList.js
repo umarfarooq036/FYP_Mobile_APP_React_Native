@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Image, TouchableOpacity } from 'react-native';
-import { styles } from './style.module'; // Import styles if needed
+import { styles } from './style.module';
 
 const ThumbnailList = ({ thumbnailImages, onThumbnailClick }) => {
   return (

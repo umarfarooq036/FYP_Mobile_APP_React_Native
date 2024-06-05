@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { View, Text, TextInput, Button, Image, StyleSheet, ActivityIndicator, TouchableOpacity, ScrollView } from "react-native";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import { selectUser } from "../data/userSlice";
+import { selectUser } from "../redux/user/userSlice";
 import { useNavigation } from '@react-navigation/native';
 
 export default function EditProfile() {
   const navigation = useNavigation();
-  const currentUser = useSelector(selectUser); // Retrieve user data (contains at least name and ID) from Redux store
+  const currentUser = useSelector(selectUser);
   const [loading, setLoading] = useState(true);
   const [formData, setFormData] = useState({
     firstName: "",
@@ -22,11 +22,10 @@ export default function EditProfile() {
 
   useEffect(() => {
     if (currentUser) {
-      // Fetch full user data from backend using user ID
       axios
         .get(`http://localhost:3002/users/${currentUser.id}`)
         .then((response) => {
-          const userData = response.data; // Assuming response.data contains user's full information
+          const userData = response.data;
           const { firstName, lastName, email, phone, address, bio, imageUrl } = userData;
           setFormData({
             firstName,

@@ -46,7 +46,7 @@ const BottomNavBar = ({ navigation }) => {
     </View>
   );
 };
-// -- STYLING --
+
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",

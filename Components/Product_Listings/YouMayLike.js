@@ -140,7 +140,7 @@ export default function YouMayLike({ navigation }) {
     </View>
   );
 }
-// -- STYLING --
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

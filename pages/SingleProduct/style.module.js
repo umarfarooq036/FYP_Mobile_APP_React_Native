@@ -9,14 +9,14 @@ export const styles = StyleSheet.create({
   },
   mainImageContainer: {
     width,
-    height: height * 0.4, // Adjust the height to cover more of the screen height
+    height: height * 0.4,
     justifyContent: "center",
     alignItems: "center",
   },
   mainImage: {
     width: "100%",
     height: "100%",
-    resizeMode: "contain", // Use "contain" to ensure the full image is displayed without cropping
+    resizeMode: "contain",
   },
   indicatorContainer: {
     position: "absolute",

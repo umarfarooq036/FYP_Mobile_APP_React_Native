@@ -24,7 +24,7 @@ const CustomTagInput = ({ tags, setTags, suggestions }) => {
           <View key={index} style={styles.tag}>
             <Text style={styles.tagText}>{tag.text}</Text>
             <TouchableOpacity onPress={() => handleRemoveTag(index)}>
-              <Text style={styles.removeTagText}>X</Text> {/* Wrapped 'X' in <Text> component */}
+              <Text style={styles.removeTagText}>X</Text>
             </TouchableOpacity>
           </View>
         ))}

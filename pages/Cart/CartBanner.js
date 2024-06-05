@@ -16,7 +16,7 @@ const CartBanner = () => {
     </ImageBackground>
   );
 };
-// -- STYLING --
+
 const styles = StyleSheet.create({
   imageBackground: {
     width: "100%",

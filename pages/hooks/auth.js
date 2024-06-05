@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import jwtDecode from "jwt-decode";
-import { setUser } from "../../data/userSlice";
+import { setUser } from "../../redux/user/userSlice";
 
 const auth = async () => {
   try {

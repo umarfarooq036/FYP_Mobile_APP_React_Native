@@ -25,7 +25,7 @@ const Navbar = ({ routeName, navigation }) => {
     } else if (option === "Logout") {
       ToastAndroid.show("Login not Implemented", ToastAndroid.SHORT);
     }
-    setProfileDropdownVisible(false); // Close dropdown after selection
+    setProfileDropdownVisible(false);
   };
 
   const handleFocus = () => {
@@ -86,7 +86,7 @@ const Navbar = ({ routeName, navigation }) => {
     </View>
   );
 };
-// -- STYLING --
+
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#fff",

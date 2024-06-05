@@ -56,7 +56,7 @@ export default function ContactInfo() {
     </View>
   );
 }
-// -- STYLING --
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

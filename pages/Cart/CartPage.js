@@ -134,7 +134,7 @@ export default function Cart({navigation}) {
     </SafeAreaView>
   );
 }
-// -- STYLING --
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
